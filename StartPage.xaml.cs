@@ -6,6 +6,7 @@ public partial class StartPage : ContentPage
 	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage"};
 	ScrollView sv;
 	VerticalStackLayout vsl;
+	
 	public StartPage()
 	{
 		Title = "Avaleht";
@@ -16,8 +17,8 @@ public partial class StartPage : ContentPage
 			Button nupp = new Button
 			{
 				Text= tekstid[i],
-				BackgroundColor=Color.FromRgb(i, 100, 20),
-				TextColor=Color.FromRgb(100, 150, 150),
+				BackgroundColor=Color.FromRgb(i+10, 100, 20),
+				TextColor=Color.FromRgb(150, 150, 190),
 				BorderWidth=10,
 				ZIndex=i,
 				FontFamily= "luffio Regular 400"
