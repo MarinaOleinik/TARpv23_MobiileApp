@@ -1,18 +1,34 @@
+using TARpv23_MobiileApp.Resources.Styles;
+
 namespace TARpv23_MobiileApp;
 
 public partial class StartPage : ContentPage
 {
-	public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage()};
-	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage"};
+    Picker picker;
+    public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage(), new Lumememm(), new KaameraPage()};
+	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage","Lumi","Teeme foto"};
 	ScrollView sv;
 	VerticalStackLayout vsl;
-	
-	public StartPage()
+    
+    public StartPage()
 	{
+        BindingContext = new ThemeViewModel();
 		Title = "Avaleht";
 		
-		vsl = new VerticalStackLayout { BackgroundColor = Color.FromRgb(150, 100, 20) };
-		for(int i = 0; i < tekstid.Count;i++)
+		vsl = new VerticalStackLayout {  };//BackgroundColor = Color.FromRgb(150, 100, 20)
+        picker = new Picker
+        {
+            Title = "Vali teema"
+        };
+        picker.ItemsSource = Enum.GetNames(typeof(Theme));
+        //picker.ItemsSource = new List<string>
+        //{
+        //    "Tume",
+        //    "Hele"
+        //};
+        vsl.Add(picker);
+        picker.SelectedIndexChanged += Picker_SelectedIndexChanged;
+        for (int i = 0; i < tekstid.Count;i++)
 		{
 			Button nupp = new Button
 			{
@@ -30,6 +46,31 @@ public partial class StartPage : ContentPage
 		sv=new ScrollView { Content=vsl};
 		Content = sv;
 	}
+    Theme theme;
+    private void Picker_SelectedIndexChanged(object? sender, EventArgs e)
+    {
+        
+        Picker? p = sender as Picker;
+        if (p != null) {
+            theme = (Theme)p.SelectedIndex;};
+        
+        ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+        if (mergedDictionaries != null)
+        {
+            mergedDictionaries.Clear();
+            switch (theme)
+            {
+                case Theme.Dark:
+                    mergedDictionaries.Add(new DarkTheme());
+                    break;
+                case Theme.Light:
+                default:
+                    mergedDictionaries.Add(new LightTheme());
+                    break;
+            }
+        }
+        Application.Current.MainPage = new NavigationPage(new AppShell());
+    }
 
     private async void Lehte_avamine(object? sender, EventArgs e)
     {

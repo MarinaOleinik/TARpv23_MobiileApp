@@ -4,10 +4,7 @@
              x:Class="TARpv23_MobiileApp.StartPage"
              
              Title="StartPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <!--<ContentPage.Resources>
+        <Binding Source="{Binding CurrentTheme}" />
+    </ContentPage.Resources>-->
 </ContentPage>
