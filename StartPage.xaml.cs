@@ -5,8 +5,8 @@ namespace TARpv23_MobiileApp;
 public partial class StartPage : ContentPage
 {
     Picker picker;
-    public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage(), new Lumememm(), new KaameraPage()};
-	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage","Lumi","Teeme foto"};
+    public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage(), new Lumememm(), new KaameraPage(),new KarussellPage()};
+	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage","Lumi","Teeme foto", "Vaata karussell" };
 	ScrollView sv;
 	VerticalStackLayout vsl;
     
