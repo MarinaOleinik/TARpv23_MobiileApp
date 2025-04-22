@@ -1,10 +1,16 @@
 using Microsoft.Maui.Controls;
 
 namespace TARpv23_MobiileApp;
-
-
+//Klass, mis esindab ühte karusselli elementi
+public class CarouselItem
+{
+    public string Title { get; set; }
+    public string ImageUrl { get; set; }
+}
+// Klass, mis esindab ühte lehekülge rakenduses
 public partial class KarussellPage : ContentPage
 {
+    //Klassitaseme väljad, et hoida CarouselView ja selle elemendid ja saaks neid kasutada kogu klassis
     private CarouselView carouselView;
     private List<CarouselItem> items;
     private int position = 0;
@@ -13,7 +19,8 @@ public partial class KarussellPage : ContentPage
     {
         Title = "Karusselli näide";
 
-        // Andmed  
+        //  📸 Andmete allikas - karuselli sisuks
+        // Iga objekt sisaldab pealkirja ja pildi URL-i 
         var items = new List<CarouselItem>
            {
                new CarouselItem { Title = "Päikesetõus", ImageUrl = "https://picsum.photos/id/1015/600/400" },
@@ -21,16 +28,17 @@ public partial class KarussellPage : ContentPage
                new CarouselItem { Title = "Järvepeegel", ImageUrl = "https://picsum.photos/id/1018/600/400" }
            };
 
-        // CarouselView  
+        // 🎠 CarouselView – MAUI komponent horisontaalseks kerimiseks
         var carouselView = new CarouselView
         {
             ItemsSource = items,
             HeightRequest = 300,
             IsBounceEnabled = true
         };
-
+        // 🔁 Karuselli üksiku kaardi kujundus (DataTemplate)
         carouselView.ItemTemplate = new DataTemplate(() =>
         {
+            // Frame – ümardatud servade ja varjuga konteiner
             var frame = new Frame
             {
                 CornerRadius = 20,
@@ -47,6 +55,7 @@ public partial class KarussellPage : ContentPage
                 Aspect = Aspect.AspectFill
             };
             image.SetBinding(Image.SourceProperty, "ImageUrl");
+            // 🎨 Gradient-taust, et tekst oleks paremini loetav
             var gradient = new BoxView
             {
                 Background = new LinearGradientBrush
@@ -70,6 +79,7 @@ public partial class KarussellPage : ContentPage
                 HorizontalOptions = LayoutOptions.Start
             };
             label.SetBinding(Label.TextProperty, "Title");
+            // 👆 Klikkimise sündmus
             var tap = new TapGestureRecognizer();
             tap.Tapped += async (s, e) =>
             {
@@ -86,7 +96,7 @@ public partial class KarussellPage : ContentPage
             return frame;
         });
 
-        // IndicatorView  
+        // ⭕ IndicatorView – väikesed punktid, mis näitavad mitmes pilt parasjagu on
         var indicatorView = new IndicatorView
         {
             IndicatorColor = Colors.Gray,
@@ -98,7 +108,7 @@ public partial class KarussellPage : ContentPage
         // Seosta IndicatorView CarouselView-ga  
         carouselView.IndicatorView = indicatorView;
 
-        // Automaatne kerimine
+        // 🔄 Automaatne kerimine iga 4 sekundi järel
         Device.StartTimer(TimeSpan.FromSeconds(4), () =>
         {
             if (items.Count == 0)
@@ -110,7 +120,7 @@ public partial class KarussellPage : ContentPage
             return true; // jätkab taimerit
         });
 
-        // Page layout  
+        // 📱 Lehekülje paigutus (StackLayout – vertikaalne paigutus) 
         Content = new StackLayout
         {
             Padding = 20,
