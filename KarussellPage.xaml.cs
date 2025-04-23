@@ -109,16 +109,17 @@ public partial class KarussellPage : ContentPage
         carouselView.IndicatorView = indicatorView;
 
         // 🔄 Automaatne kerimine iga 4 sekundi järel
-        Device.StartTimer(TimeSpan.FromSeconds(4), () =>
-        {
-            if (items.Count == 0)
-                return false;
+        //Device.StartTimer(TimeSpan.FromSeconds(4), () =>
+        //{
+        //    if (items.Count == 0)
+        //        return false;
 
-            position = (position + 1) % items.Count;
-            carouselView.Position = position;
+        //    position = (position + 1) % items.Count;
+        //    carouselView.Position = position;
 
-            return true; // jätkab taimerit
-        });
+        //    return true; // jätkab taimerit
+        //});
+        
 
         // 📱 Lehekülje paigutus (StackLayout – vertikaalne paigutus) 
         Content = new StackLayout
@@ -127,7 +128,8 @@ public partial class KarussellPage : ContentPage
             Children =
                {
                    carouselView,
-                   indicatorView
+                   indicatorView,
+                  
                }
         };
     }

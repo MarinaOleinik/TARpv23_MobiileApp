@@ -5,8 +5,8 @@ namespace TARpv23_MobiileApp;
 public partial class StartPage : ContentPage
 {
     Picker picker;
-    public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage(), new Lumememm(), new KaameraPage(),new KarussellPage()};
-	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage","Lumi","Teeme foto", "Vaata karussell" };
+    public List<ContentPage> lehed=new List<ContentPage>() { new TextPage(),new FigurePage(), new Lumememm(), new KaameraPage(),new KarussellPage(),new LanguagePage()};
+	public List<string> tekstid=new List<string>{"Tee lahti TekstPage", "Tee lahti FigurePage","Lumi","Teeme foto", "Vaata karussell", "Mitmekeelne leht" };
 	ScrollView sv;
 	VerticalStackLayout vsl;
     
@@ -21,12 +21,14 @@ public partial class StartPage : ContentPage
             Title = "Vali teema"
         };
         picker.ItemsSource = Enum.GetNames(typeof(Theme));
-        //picker.ItemsSource = new List<string>
-        //{
-        //    "Tume",
-        //    "Hele"
-        //};
-        vsl.Add(picker);
+        picker.ItemsSource = new List<string>
+        {
+            "Tume",
+            "Hele"
+        };
+
+
+        
         picker.SelectedIndexChanged += Picker_SelectedIndexChanged;
         for (int i = 0; i < tekstid.Count;i++)
 		{
