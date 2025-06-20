@@ -58,6 +58,11 @@
 
 	<ItemGroup>
 	  <Compile Remove="CarouselItem.cs" />
+	  <Compile Remove="KarussellPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="KarussellPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,9 +97,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="KaameraPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KarussellPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="LanguagePage.xaml">

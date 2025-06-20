@@ -4,7 +4,7 @@
              x:Class="TARpv23_MobiileApp.StartPage"
              
              Title="StartPage">
-    <!--<ContentPage.Resources>
-        <Binding Source="{Binding CurrentTheme}" />
-    </ContentPage.Resources>-->
+    <ContentPage.Resources>
+        <!--<Binding Source="{Binding CurrentTheme}" />-->
+    </ContentPage.Resources>
 </ContentPage>

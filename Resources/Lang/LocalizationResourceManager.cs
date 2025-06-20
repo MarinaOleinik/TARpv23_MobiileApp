@@ -5,7 +5,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using TARpv23_MobiileApp.Resources.Lang;
+using TARpv23_MobiileApp.Resources;
 
 namespace TARpv23_MobiileApp.Resources.Lang
 {
